@@ -30,16 +30,6 @@ def simulate_insurance_risk_model(a0, n0, param_lambda, param_ni, param_mi, c, T
         update_Capital(c, n, a, profits, t, tE)  # Actualizamos el capital de la empresa
         t = tE  # Actualizamos el tiempo
 
-        # Generamos el tipo de evento
-        J = np.random.choice(
-            [1, 2, 3],
-            p=[
-                param_ni / (param_ni + n * param_mi + n * param_lambda),
-                (n * param_mi) / (param_ni + n * param_mi + n * param_lambda),
-                (n * param_lambda) / (param_ni + n * param_mi + n * param_lambda),
-            ],
-        )
-
         if J == 1:  # Nuevo asegurado
             n += 1
             cant_nNew += 1
